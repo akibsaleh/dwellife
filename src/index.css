@@ -2,10 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@700;900&family=Sofia+Sans+Semi+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,500&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Sofia Sans Semi Condensed', sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 300;
   height: 100%;
 
   font-synthesis: none;
@@ -14,10 +16,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body, #root{
+body,
+#root {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
   width: 100%;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Gabarito', sans-serif;
 }

@@ -8,6 +8,7 @@ import Dashboard from '../Pages/Dashboard';
 import UserDashboard from '../Pages/User/UserDashboard';
 import AllUsers from '../Pages/Admin/AllUsers';
 import AdminRoutes from './AdminRoutes';
+import Apartments from '../Pages/Apartments';
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: '/apartments',
+        element: <Apartments />,
       },
       {
         path: '/login',
@@ -32,8 +37,8 @@ export const router = createBrowserRouter([
         element: <Dashboard />,
         children: [
           {
-            path: '/dashboard/user-dashboard',
-            element: <UserDashboard />,
+            path: '/dashboard/user',
+            element: <PrivateRoutes><UserDashboard /></PrivateRoutes>,
           },
           {
             path: '/dashboard/allusers',
