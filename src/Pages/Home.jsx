@@ -1,13 +1,10 @@
-// import useGetQuery from '../CustomHooks/useGetQuery';
+import Banner from '../Components/Banner/Banner';
+
 
 const Home = () => {
-  // const url = "http://localhost:5000/cart";
-  // const query = {email: 'ualala', role: 'customer'}
-  // const {data} = useGetQuery(url, 'random', query);
-  // console.log(data);
   return (
-    <div>
-      <h2>Home</h2>
+    <div className='max-w-1440 mx-auto flex flex-col items-center justify-start'>
+      <Banner />
     </div>
   );
 };

@@ -11,7 +11,6 @@ const Header = () => {
   useEffect(() => {
     themeChange(false);
   }, []);
-  console.log(isDark);
   return (
     <header className="drawer drawer-end bg-base-200">
       <input
