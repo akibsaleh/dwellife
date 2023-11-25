@@ -45,7 +45,7 @@ const BannerContent = ({prevSlide, nextSlide, headline, subhead, text, img, link
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 1.2, ease: 'easeInOut' }}
-        className="mask mask-hexagon-2 absolute top-0 right-20 !my-0 z-20"
+        className="mask mask-hexagon-2 absolute top-0 right-20 !my-0 z-20 h-[600px] w-[600px]"
         src={img}
       />
       <motion.div

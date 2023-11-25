@@ -37,7 +37,7 @@ const Banner = () => {
               headline={'Welcome Home'}
               subhead={'Discover Your Dream Space'}
               text={'Step into a world of comfort and style. Find the perfect apartment that suits your lifestyle. Your dream home is just a click away.'}
-              img={'https://source.unsplash.com/random/600x600'}
+              img={'https://i.ibb.co/ccVxWfh/slide1.jpg'}
               link={'/apartments'}
             />
           )}
@@ -48,7 +48,7 @@ const Banner = () => {
               headline={'Seamless Living'}
               subhead={'Elevate Your Living Experience'}
               text={'Experience the convenience of modern living. Our apartments are designed to seamlessly blend comfort and functionality, providing you with a space that feels like home.'}
-              img={'https://source.unsplash.com/random/600x600'}
+              img={'https://i.ibb.co/6wvYxrb/slide2.jpg'}
               link={'/apartments'}
             />
           )}
@@ -59,7 +59,7 @@ const Banner = () => {
               headline={'Rule Your Space'}
               subhead={'Customize Your Sanctuary'}
               text={'At Dwellife, we believe in individuality. Personalize your space and make it truly yours. From cozy studios to spacious lofts, we have the canvas; you bring the creativity.'}
-              img={'https://source.unsplash.com/random/600x600'}
+              img={'https://i.ibb.co/8bwpGqg/slide3.jpg'}
               link={'/apartments'}
             />
           )}
@@ -70,7 +70,7 @@ const Banner = () => {
               headline={'Explore Possibilities'}
               subhead={'Endless Choices, One Platform'}
               text={'Embark on a journey of exploration. With a diverse range of apartments at your fingertips, find the ideal place that suits your needs. Your next adventure begins with Dwellife.'}
-              img={'https://source.unsplash.com/random/600x600'}
+              img={'https://i.ibb.co/QjQD4VB/slide4.jpg'}
               link={'/apartments'}
             />
           )}
@@ -81,3 +81,5 @@ const Banner = () => {
 };
 
 export default Banner;
+
+
