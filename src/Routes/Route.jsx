@@ -33,35 +33,35 @@ export const router = createBrowserRouter([
         path: '/signup',
         element: <Register />,
       },
+    ],
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
+    children: [
       {
-        path: '/dashboard',
-        element: <Dashboard />,
-        children: [
-          {
-            path: '/dashboard/user',
-            element: <PrivateRoutes><UserDashboard /></PrivateRoutes>,
-          },
-          {
-            path: '/dashboard/member',
-            element: <PrivateRoutes><UserDashboard /></PrivateRoutes>,
-          },
-          {
-            path: '/dashboard/admin',
-            element: <PrivateRoutes><UserDashboard /></PrivateRoutes>,
-          },
-          {
-            path: '/dashboard/my-profile',
-            element: <PrivateRoutes><MyProfile /></PrivateRoutes>
-          },
-          {
-            path: '/dashboard/allusers',
-            element: (
-              <AdminRoutes>
-                <AllUsers />
-              </AdminRoutes>
-            ),
-          },
-        ],
+        path: '/dashboard/user',
+        element: <PrivateRoutes><UserDashboard /></PrivateRoutes>,
+      },
+      {
+        path: '/dashboard/member',
+        element: <PrivateRoutes><UserDashboard /></PrivateRoutes>,
+      },
+      {
+        path: '/dashboard/admin',
+        element: <PrivateRoutes><UserDashboard /></PrivateRoutes>,
+      },
+      {
+        path: '/dashboard/my-profile',
+        element: <PrivateRoutes><MyProfile /></PrivateRoutes>
+      },
+      {
+        path: '/dashboard/allusers',
+        element: (
+          <AdminRoutes>
+            <AllUsers />
+          </AdminRoutes>
+        ),
       },
     ],
   },
