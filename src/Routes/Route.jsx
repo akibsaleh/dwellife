@@ -9,6 +9,7 @@ import UserDashboard from '../Pages/User/UserDashboard';
 import AllUsers from '../Pages/Admin/AllUsers';
 import AdminRoutes from './AdminRoutes';
 import Apartments from '../Pages/Apartments';
+import MyProfile from '../Pages/User/MyProfile';
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,18 @@ export const router = createBrowserRouter([
           {
             path: '/dashboard/user',
             element: <PrivateRoutes><UserDashboard /></PrivateRoutes>,
+          },
+          {
+            path: '/dashboard/member',
+            element: <PrivateRoutes><UserDashboard /></PrivateRoutes>,
+          },
+          {
+            path: '/dashboard/admin',
+            element: <PrivateRoutes><UserDashboard /></PrivateRoutes>,
+          },
+          {
+            path: '/dashboard/my-profile',
+            element: <PrivateRoutes><MyProfile /></PrivateRoutes>
           },
           {
             path: '/dashboard/allusers',

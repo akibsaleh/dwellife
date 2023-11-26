@@ -6,6 +6,9 @@ export default {
       maxWidth: {
         '1440': '1440px',
       },
+      fontFamily: {
+        'gabarito': ['"Gabarito", sans-serif']
+      }
     },
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],

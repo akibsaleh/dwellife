@@ -51,7 +51,7 @@ const Header = () => {
           </div>
 
           <div className="flex-none hidden md:block">
-            <ul className="menu menu-horizontal text-base items-center">
+            <ul className="menu menu-horizontal text-base items-center [&_li_a]:text-2xl [&_li_a]:font-bold">
               <Menu />
             </ul>
           </div>

@@ -10,7 +10,7 @@ const MainLayout = () => {
   return (
     <>
       {noHeaderFooter || <Header />}
-      <main className={`flex flex-col items-center h-auto grow prose lg:prose-lg ${ noHeaderFooter ? 'max-w-full' : 'max-w-1440'} w-full`}>
+      <main className={`flex flex-col items-center h-auto grow prose lg:prose-xl ${ noHeaderFooter ? 'max-w-full' : 'max-w-1440'} w-full`}>
           <Outlet />
       </main>
       {noHeaderFooter || <Footer />}
