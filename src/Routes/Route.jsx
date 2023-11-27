@@ -6,10 +6,11 @@ import Register from '../Pages/Register';
 import PrivateRoutes from './PrivateRoutes';
 import Dashboard from '../Pages/Dashboard';
 import UserDashboard from '../Pages/User/UserDashboard';
-import AllUsers from '../Pages/Admin/AllUsers';
 import AdminRoutes from './AdminRoutes';
 import Apartments from '../Pages/Apartments';
 import MyProfile from '../Pages/User/MyProfile';
+import ManageMembers from '../Pages/Admin/ManageMembers';
+import MakeAnnouncement from '../Pages/Admin/MakeAnnouncement';
 
 export const router = createBrowserRouter([
   {
@@ -56,10 +57,18 @@ export const router = createBrowserRouter([
         element: <PrivateRoutes><MyProfile /></PrivateRoutes>
       },
       {
-        path: '/dashboard/allusers',
+        path: '/dashboard/manage-members',
         element: (
           <AdminRoutes>
-            <AllUsers />
+            <ManageMembers />
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: '/dashboard/make-announcement',
+        element: (
+          <AdminRoutes>
+            <MakeAnnouncement />
           </AdminRoutes>
         ),
       },

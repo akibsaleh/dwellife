@@ -22,7 +22,7 @@ const MediaButton = () => {
             role: 'user',
           };
           axiosPublic
-            .post('/users', userInfo)
+            .post('/api/users', userInfo)
             .then((res) => {
               if (res.data.insertedId !== null) {
                 toast.success('Account created successfully');

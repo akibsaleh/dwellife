@@ -10,7 +10,11 @@ const AdminRoutes = ({ children }) => {
   const location = useLocation();
 
   if (loading || isAdminLoading) {
-    return <progress className="progress w-56"></progress>;
+    return (
+      <div className="flex flex-col grow h-full items-center justify-center">
+        <progress className="progress w-56"></progress>
+      </div>
+    );
   }
   if (user && isAdmin) {
     return children;
@@ -19,7 +23,7 @@ const AdminRoutes = ({ children }) => {
   return (
     <Navigate
       to={'/login'}
-      state={{ from: location }} 
+      state={{ from: location }}
       replace
     />
   );

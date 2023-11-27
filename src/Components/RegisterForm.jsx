@@ -27,7 +27,7 @@ const RegisterForm = () => {
       const profileUpdateStatus = await updateProfile(userCredential?.user?.auth?.currentUser, { displayName: name, photoURL: photo })
         .then(() => true)
         .catch((err) => err);
-      const addUserToDB = await axiosPublic.post('/users', userInfo);
+      const addUserToDB = await axiosPublic.post('/api/users', userInfo);
       if (addUserToDB.data.insertedId && profileUpdateStatus) {
         navigate(location?.state ? location?.state?.from?.pathname : '/');
         toast.success(`${name} signed up successfully`);
@@ -148,6 +148,14 @@ const RegisterForm = () => {
               })}
             />
           </div>
+          {errors.password && (
+            <p
+              role="alert"
+              className="text-sm text-red-500 mt-1"
+            >
+              {errors.password?.message}
+            </p>
+          )}
         </div>
         {/* End Form Group */}
         <button

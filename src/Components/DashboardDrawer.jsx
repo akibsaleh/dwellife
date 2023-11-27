@@ -8,7 +8,6 @@ const DashboardDrawer = () => {
   const handleDrawer = () => {
     setSideMenu(!sideMenu);
   };
-  console.log(sideMenu);
   return (
     <motion.div
       initial={{ width: '320px' }}

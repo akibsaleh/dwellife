@@ -6,7 +6,7 @@ const Register = () => {
   return (
     <div
       style={{ backgroundImage: "url(https://i.ibb.co/whCDWjN/anil-kumar-SXigdc-QPbd8-unsplash.webp)" }}
-      className="flex flex-col min-h-screen w-full items-center justify-center bg-center bg-cover bg-no-repeat"
+      className="flex flex-col min-h-screen w-full items-center justify-center bg-center bg-cover bg-no-repeat py-20"
     >
       <div className='glass p-20 max-w-lg w-full rounded-box overflow-hidden'>
         <h1 className='!my-0'>Sign up</h1>
