@@ -21,7 +21,7 @@ const RegisterForm = () => {
 
   const handleOnSubmit = async (data) => {
     const { name, photo, email, password } = data;
-    const userInfo = { name, photo, email };
+    const userInfo = { name, photo, email, role: 'user' };
     try {
       const userCredential = await handleEmailPassSignup(email, password);
       const profileUpdateStatus = await updateProfile(userCredential?.user?.auth?.currentUser, { displayName: name, photoURL: photo })

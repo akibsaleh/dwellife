@@ -19,6 +19,7 @@ const MediaButton = () => {
             name: userCredential?.user?.displayName,
             email: userCredential?.user?.email,
             photo: userCredential?.user?.photoURL,
+            role: 'user',
           };
           axiosPublic
             .post('/users', userInfo)
