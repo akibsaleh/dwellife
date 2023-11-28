@@ -12,6 +12,7 @@ import MyProfile from '../Pages/User/MyProfile';
 import ManageMembers from '../Pages/Admin/ManageMembers';
 import MakeAnnouncement from '../Pages/Admin/MakeAnnouncement';
 import Announcements from '../Pages/User/Announcements';
+import ManageCoupons from '../Pages/Admin/ManageCoupons';
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +75,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoutes>
             <MakeAnnouncement />
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: '/dashboard/manage-coupons',
+        element: (
+          <AdminRoutes>
+            <ManageCoupons />
           </AdminRoutes>
         ),
       },

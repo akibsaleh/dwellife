@@ -46,7 +46,7 @@ const Announcements = () => {
     <div className="max-w-1440 w-full flex flex-col items-center">
       <PageTitle
         title={'Announcements'}
-        subtitle={''}
+        subtitle={'Find all the announcements below published by admin'}
       />
       <div className="w-full flex flex-col items-center gap-y-10">
         {announcements.map((announcement) => 
