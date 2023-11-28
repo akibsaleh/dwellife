@@ -6,16 +6,18 @@ import useAdmin from '../../CustomHooks/useAdmin';
 import useAxiosSecure from '../../CustomHooks/useAxiosSecure';
 import { toast } from 'react-toastify';
 import { useQuery } from '@tanstack/react-query';
+import CouponRow from './Couponrow';
 
 const ManageCoupons = () => {
   const isAdmin = useAdmin();
   const axiosSecure = useAxiosSecure();
   const [openModal, setOpenModal] = useState(false);
+
   const {
     isloading,
     error,
     data: coupons = [],
-    refetch
+    refetch,
   } = useQuery({
     queryKey: ['coupons'],
     queryFn: async () => {
@@ -38,6 +40,8 @@ const ManageCoupons = () => {
       refetch();
     }
   };
+
+
   if (isAdmin) {
     return (
       <div className="max-w-1440 w-full flex flex-col items-center">
@@ -63,7 +67,7 @@ const ManageCoupons = () => {
           )}
           {error && (
             <div className="w-full flex flex-col items-center justify-center">
-                <p className='text-2xl font-bold'>Failed to get coupons data from database</p>
+              <p className="text-2xl font-bold">Failed to get coupons data from database</p>
             </div>
           )}
           {coupons && (
@@ -78,27 +82,13 @@ const ManageCoupons = () => {
                       <th>Discount Percentage</th>
                       <th>Description</th>
                       <th>Availability</th>
-                      <th>Action</th>
+                      <th className='text-center'>Action</th>
                     </tr>
                   </thead>
                   <tbody className="text-xl">
-                    {coupons.map((coupon, idx) => <tr key={coupon?._id}>
-                      <th>{idx + 1}</th>
-                      <td>{coupon?.code}</td>
-                      <td>{coupon?.percentage}%</td>
-                      <td className="text-sm">{coupon?.desc}</td>
-                      <td>
-                        <p className="badge badge-success">Available</p>
-                      </td>
-                      <td>
-                        <button
-                          type="button"
-                          className="btn btn-error btn-outline btn-sm text-xl"
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>)}
+                    {coupons.map((coupon, idx) => (
+                      <CouponRow key={coupon._id} coupon={coupon} idx={idx} refetch={refetch} />
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -146,7 +136,8 @@ const ManageCoupons = () => {
                   >
                     Submit
                   </button>
-                  <button type='button'
+                  <button
+                    type="button"
                     className="btn btn-md btn-outline btn-error text-xl"
                     onClick={() => setOpenModal(false)}
                   >
