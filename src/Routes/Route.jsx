@@ -11,6 +11,7 @@ import Apartments from '../Pages/Apartments';
 import MyProfile from '../Pages/User/MyProfile';
 import ManageMembers from '../Pages/Admin/ManageMembers';
 import MakeAnnouncement from '../Pages/Admin/MakeAnnouncement';
+import Announcements from '../Pages/User/Announcements';
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/my-profile',
         element: <PrivateRoutes><MyProfile /></PrivateRoutes>
+      },
+      {
+        path: '/dashboard/announcements',
+        element: <PrivateRoutes><Announcements /></PrivateRoutes>
       },
       {
         path: '/dashboard/manage-members',

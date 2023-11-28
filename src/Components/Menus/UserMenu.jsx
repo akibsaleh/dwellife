@@ -19,7 +19,7 @@ const UserMenu = ({ sideMenu }) => {
           <hr className="border border-base-300/30 inline-block my-2" />
           <NavLink
             className={`text-2xl btn btn-ghost flex justify-${sideMenu ? 'end' : 'start'} items-center ${sideMenu ? 'pl-5 pr-7' : 'gap-x-5 px-5'}`}
-            to={'/dashboard/my-profile'}
+            to={'/dashboard/announcements'}
           >
             <PiSpeakerHigh className="text-3xl" />
             {sideMenu ? '' : 'Announcements'}
