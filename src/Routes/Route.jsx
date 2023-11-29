@@ -17,6 +17,7 @@ import ManageAgreements from '../Pages/Admin/ManageAgreements';
 import MemberRoutes from './MemberRoute';
 import MakePayment from '../Pages/Member/MakePayment';
 import PaymentHistory from '../Pages/Member/PaymentHistory';
+import ConfirmPayment from '../Pages/Member/ConfirmPayment';
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/payment-history',
         element: <MemberRoutes><PaymentHistory /></MemberRoutes>
+      },
+      {
+        path: '/dashboard/confirm-payment',
+        element: <MemberRoutes><ConfirmPayment /></MemberRoutes>
       },
       // Admin Routes
       {

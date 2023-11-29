@@ -3,7 +3,9 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/Provider';
+import { useState } from 'react';
 const LoginForm = () => {
+  const [showSpinner, setShowSpinner] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const {
@@ -15,10 +17,12 @@ const LoginForm = () => {
   const { handleEmailPassSignin } = useContext(AuthContext);
 
   const handleOnSubmit = (data) => {
+    setShowSpinner(true);
     const { email, password } = data;
     handleEmailPassSignin(email, password)
       .then((userCredential) => {
         if (userCredential.user) {
+          setShowSpinner(false);
           navigate(location?.state ? location?.state?.from?.pathname : '/');
           toast.success('Logged in successfully');
         }
@@ -42,9 +46,7 @@ const LoginForm = () => {
             <input
               type="email"
               id="email"
-              className={`input input-bordered input-secondary w-full max-w-full ${
-                errors.email && '!input-error'
-              }`}
+              className={`input input-bordered input-secondary w-full max-w-full ${errors.email && '!input-error'}`}
               {...register('email', {
                 required: 'Email is required',
                 pattern: {
@@ -79,9 +81,7 @@ const LoginForm = () => {
               type="password"
               id="password"
               name="password"
-              className={`input input-bordered input-secondary w-full max-w-full ${
-                errors.password && '!input-error'
-              }`}
+              className={`input input-bordered input-secondary w-full max-w-full ${errors.password && '!input-error'}`}
               {...register('password', {
                 required: 'Password is required',
                 validate: {
@@ -107,6 +107,7 @@ const LoginForm = () => {
           type="submit"
           className="btn btn-outline btn-secondary hover:btn-active hover:btn-neutral text-lg"
         >
+          {showSpinner && <span className="loading loading-spinner"></span>}
           Sign In
         </button>
       </div>

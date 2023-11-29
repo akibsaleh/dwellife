@@ -7,37 +7,32 @@ import { AuthContext } from '../Providers/Provider';
 import { toast } from 'react-toastify';
 
 const ApartmentCard = ({ apartment }) => {
-    const axiosSecure = useAxiosSecure();
-    const {user} = useContext(AuthContext);
-    const navigate = useNavigate();
-    const handleClick = async () => {
-      const date = new Date();
-      let day = date.getDate();
-      let month = date.getMonth() + 1;
-      let year = date.getFullYear();
-      let currentDate = `${day}-${month}-${year}`;
-        const info = {
-            email: user?.email,
-            name: user?.displayName,
-            apartment: apartment?.apartment,
-            block: apartment?.block,
-            floor: apartment?.floor,
-            rent: apartment?.rent,
-            status: 'pending',
-            date: currentDate,
-        }
-        if(user?.email) {
-            const response = await axiosSecure.post('/api/agreement', info);
-            if(response.data.insertedId) {
-                toast.success('Agreement submitted successfully');
-            } else {
-                toast.error('Failed to submit agreement');
-            }
-        } else {
-            navigate('/login');
-        }
-        
+  const axiosSecure = useAxiosSecure();
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleClick = async () => {
+    const currentDate = new Date().toLocaleDateString('en-GB');
+    const info = {
+      email: user?.email,
+      name: user?.displayName,
+      apartment: apartment?.apartment,
+      block: apartment?.block,
+      floor: apartment?.floor,
+      rent: apartment?.rent,
+      status: 'pending',
+      date: currentDate,
+    };
+    if (user?.email) {
+      const response = await axiosSecure.post('/api/agreement', info);
+      if (response.data.insertedId) {
+        toast.success('Agreement submitted successfully');
+      } else {
+        toast.error('Failed to submit agreement');
+      }
+    } else {
+      navigate('/login');
     }
+  };
   return (
     <div className="card card-side w-full bg-base-100 shadow-xl flex justify-between items-center">
       <figure className="!my-0 w-1/2 flex grow">
@@ -61,10 +56,17 @@ const ApartmentCard = ({ apartment }) => {
             <PiSquaresFour className="text-2xl mr-2" />
             Block: {apartment?.block}
           </p>
-          <p className='py-3 font-bold'>Rent: <span className='inline-block text-5xl text-primary'>{apartment?.rent}</span>/month</p>
+          <p className="py-3 font-bold">
+            Rent: <span className="inline-block text-5xl text-primary">{apartment?.rent}</span>/month
+          </p>
         </div>
         <div className="card-actions">
-          <button className="btn btn-outline btn-primary w-full text-2xl" onClick={handleClick}>Agreement</button>
+          <button
+            className="btn btn-outline btn-primary w-full text-2xl"
+            onClick={handleClick}
+          >
+            Agreement
+          </button>
         </div>
       </div>
     </div>
