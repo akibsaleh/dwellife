@@ -1,22 +1,22 @@
 /* eslint-disable react/prop-types */
 import { useContext } from 'react';
-import useAdmin from '../CustomHooks/useAdmin';
 import { AuthContext } from '../Providers/Provider';
 import { Navigate, useLocation } from 'react-router-dom';
+import useMember from '../CustomHooks/useMember';
 
-const AdminRoutes = ({ children }) => {
+const MemberRoutes = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
-  const [isAdmin, isAdminLoading] = useAdmin();
+  const [isMember, isMemberLoading] = useMember();
   const location = useLocation();
 
-  if (loading && isAdminLoading) {
+  if (loading && isMemberLoading) {
     return (
       <div className="flex flex-col grow h-full items-center justify-center">
         <progress className="progress w-56"></progress>
       </div>
     );
   }
-  if (user && isAdmin) {
+  if (user && isMember) {
     return children;
   }
 
@@ -29,4 +29,4 @@ const AdminRoutes = ({ children }) => {
   );
 };
 
-export default AdminRoutes;
+export default MemberRoutes;

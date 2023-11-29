@@ -1,7 +1,11 @@
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/Provider';
+
 const UserDashboard = () => {
+    const {user} = useContext(AuthContext);
     return ( 
-        <div>
-            <h1>User Dashboard</h1>
+        <div className='max-w-1440 mx-auto items-center justify-center'>
+            <h1>Welcome, {user?.displayName}</h1>
         </div>
      );
 }
