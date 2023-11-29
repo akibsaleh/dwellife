@@ -13,8 +13,9 @@ import ManageMembers from '../Pages/Admin/ManageMembers';
 import MakeAnnouncement from '../Pages/Admin/MakeAnnouncement';
 import Announcements from '../Pages/User/Announcements';
 import ManageCoupons from '../Pages/Admin/ManageCoupons';
+import ManageAgreements from '../Pages/Admin/ManageAgreements';
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
@@ -86,6 +87,16 @@ export const router = createBrowserRouter([
           </AdminRoutes>
         ),
       },
+      {
+        path: '/dashboard/manage-agreements',
+        element: (
+          <AdminRoutes>
+            <ManageAgreements />
+          </AdminRoutes>
+        ),
+      },
     ],
   },
 ]);
+
+export default router;

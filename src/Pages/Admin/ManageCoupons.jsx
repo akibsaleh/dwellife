@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PageTitle from '../../Components/PageTitle';
 import { IoIosAdd } from 'react-icons/io';
 import { useForm } from 'react-hook-form';
@@ -14,7 +14,7 @@ const ManageCoupons = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const {
-    isloading,
+    isLoading,
     error,
     data: coupons = [],
     refetch,
@@ -29,9 +29,16 @@ const ManageCoupons = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
     reset,
   } = useForm();
+
+  useEffect(()=>{
+    setValue('available', true);
+  }, []);
+  
   const handleCouponForm = async (data) => {
+    console.log(data);
     const response = await axiosSecure.post('/api/coupons', data);
     console.log(response);
     if (response.data.insertedId) {
@@ -60,7 +67,7 @@ const ManageCoupons = () => {
               Create Coupon
             </button>
           </div>
-          {isloading && (
+          {isLoading && (
             <div className="w-full flex flex-col items-center justify-center">
               <progress className="progress w-56"></progress>
             </div>
@@ -78,7 +85,7 @@ const ManageCoupons = () => {
                   <thead className="text-lg">
                     <tr>
                       <th></th>
-                      <th>Coupon code</th>
+                      <th className=''>Coupon code</th>
                       <th>Discount Percentage</th>
                       <th>Description</th>
                       <th>Availability</th>
@@ -123,6 +130,7 @@ const ManageCoupons = () => {
                   {...register('percentage', { required: 'Coupon discount percentage is required' })}
                 />
                 {errors.percentage && <p className="text-red-500">{errors.percentage.message}</p>}
+                <input type="text" hidden {...register('available')} />
                 <textarea
                   className="textarea textarea-bordered"
                   placeholder="Enter coupon description here"

@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import queryString from 'query-string';
+import useAxiosPublic from './useAxiosPublic';
 
 const useGetQuery = (url, key, query) => {
+  const axiosPublic = useAxiosPublic();
   const getData = async (url) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api${url}?${queryString.stringify(query)}`);
+      const response = await axiosPublic.get(`/api${url}?${queryString.stringify(query)}`);
       return response?.data;
     } catch (error) {
       console.log(error);

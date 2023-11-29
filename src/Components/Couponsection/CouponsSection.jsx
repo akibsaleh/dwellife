@@ -4,19 +4,24 @@ import Marquee from 'react-fast-marquee';
 import { useQuery } from '@tanstack/react-query';
 import CouponCard from './CouponCard';
 import useAxiosSecure from '../../CustomHooks/useAxiosSecure';
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/Provider';
 const CouponsSection = () => {
   const axiosSecure = useAxiosSecure();
   const {
-    isloading,
+    isLoading,
     error,
     data: coupons = [],
   } = useQuery({
-    queryKey: ['coupons'],
+    queryKey: ['available-coupons'],
     queryFn: async () => {
-      const response = await axiosSecure.get('/api/coupons');
+      const response = await axiosSecure.get('/api/available-coupons');
       return response.data;
     },
   });
+  if (isLoading) return <h1>Loading...</h1>;
+  if (error) return <h1>{error.message}</h1>;
+
   return (
     <div className="w-full grid grid-cols-2 py-20">
       <div
@@ -44,16 +49,16 @@ const CouponsSection = () => {
           </motion.h4>
         </div>
       </div>
-        <div className="w-full">
-          <Marquee pauseOnHover={'true'}>
-            {coupons?.map((coupon) => (
-              <CouponCard
-                key={coupon?._id}
-                coupon={coupon}
-              />
-            ))}
-          </Marquee>
-        </div>
+      <div className="w-full">
+        <Marquee pauseOnHover={'true'}>
+          {coupons?.map((coupon) => (
+            <CouponCard
+              key={coupon?._id}
+              coupon={coupon}
+            />
+          ))}
+        </Marquee>
+      </div>
     </div>
   );
 };

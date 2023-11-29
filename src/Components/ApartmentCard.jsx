@@ -11,6 +11,11 @@ const ApartmentCard = ({ apartment }) => {
     const {user} = useContext(AuthContext);
     const navigate = useNavigate();
     const handleClick = async () => {
+      const date = new Date();
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+      let currentDate = `${day}-${month}-${year}`;
         const info = {
             email: user?.email,
             name: user?.displayName,
@@ -19,6 +24,7 @@ const ApartmentCard = ({ apartment }) => {
             floor: apartment?.floor,
             rent: apartment?.rent,
             status: 'pending',
+            date: currentDate,
         }
         if(user?.email) {
             const response = await axiosSecure.post('/api/agreement', info);

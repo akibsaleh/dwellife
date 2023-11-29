@@ -6,7 +6,7 @@ import { SlCalender } from "react-icons/sl";
 const Announcements = () => {
   const axiosSecure = useAxiosSecure();
   const {
-    isloading,
+    isLoading,
     error,
     data: announcements = [],
   } = useQuery({
@@ -17,7 +17,7 @@ const Announcements = () => {
     },
   });
 
-  if (isloading)
+  if (isLoading)
     return (
       <div className="max-w-1440 w-full flex flex-col items-center">
         <PageTitle
@@ -43,7 +43,7 @@ const Announcements = () => {
       </div>
     );
   return (
-    <div className="max-w-1440 w-full flex flex-col items-center">
+    <div className="max-w-1440 w-full flex flex-col items-center pb-20">
       <PageTitle
         title={'Announcements'}
         subtitle={'Find all the announcements below published by admin'}
