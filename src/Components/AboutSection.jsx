@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 const AboutSection = () => {
   return (
-    <div className="flex justify-center items-center">
-      <div className="w-1/2 flex items-center gap-x-8">
-        <div className="w-40 break-words !text-5xl font-black relative h-600 font-gabarito text-neutral-content mt-7 overflow-hidden">
+    <div className="flex flex-col-reverse lg:flex-row justify-center items-center px-5 lg:px-0">
+      <div className="w-full lg:w-1/2 flex items-center gap-x-8">
+        <div className="hidden md:block w-40 break-words !text-5xl font-black relative h-600 font-gabarito text-neutral-content mt-7 overflow-hidden">
           ABOUT <span className="h-5 block"></span> US
           <motion.span
             initial={{ y: 0 }}
@@ -43,7 +43,7 @@ const AboutSection = () => {
           </motion.p>
         </div>
       </div>
-      <div className="w-1/2 flex flex-col jus items-center relative">
+      <div className="w-full lg:w-1/2 flex flex-col jus items-center relative">
         <motion.img
           initial={{ scale: 0.5, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}

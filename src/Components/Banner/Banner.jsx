@@ -22,10 +22,10 @@ const Banner = () => {
           hide: true,
         }}
         modules={[Scrollbar, Navigation, Autoplay]}
-        autoplay={{
-          delay:5000,
-          disableOnInteraction: true,          
-        }}
+        // autoplay={{
+        //   delay:5000,
+        //   disableOnInteraction: true,          
+        // }}
         className="bannerSwiper w-full [&.swiper-slide]flex [&.swiper-slide]justify-center [&.swiper-slide]items-center mt-5 max-w-full"
         onSlideChangeTransitionEnd={(swiper) => {
           setActiveSlide(swiper.activeIndex);

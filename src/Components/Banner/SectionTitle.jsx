@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const SectionTitle = ({ title, subtitle, align }) => {
   return (
-    <div className={`max-w-1440 w-full mt-16 flex flex-col items-${align === 'left' ? 'start' : 'center'}`}>
+    <div className={`max-w-1440 w-full mt-16 flex flex-col items-center lg:items-${align === 'left' ? 'start' : 'center'} px-5 lg:px-0 text-center lg:text-left`}>
       <motion.h3
         initial={{ scaleX: 0, opacity: 0, y: -10 }}
         whileInView={{ scaleX: 1, opacity: 1, y: 0 }}

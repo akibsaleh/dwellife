@@ -21,27 +21,7 @@ const Header = () => {
       <div className="drawer-content flex flex-col max-w-1440 mx-auto w-full">
         {/* Navbar */}
         <div className="w-full navbar">
-          <div className="flex-none lg:hidden">
-            <label
-              htmlFor="nav-drawer"
-              aria-label="open sidebar"
-              className="btn btn-square btn-ghost"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-8 h-8 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </label>
-          </div>
+          
           <div className="flex-1 px-2 mx-2">
             <img
               src={isDark ? logoWhite : logo}
@@ -60,9 +40,30 @@ const Header = () => {
             setIsDark={setIsDark}
           />
           <AccessButtons />
+          <div className="flex-none lg:hidden">
+            <label
+              htmlFor="nav-drawer"
+              aria-label="open sidebar"
+              className="btn btn-square btn-outline btn-primary ml-3 mr-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-8 h-8 stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </label>
+          </div>
         </div>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side z-[999]">
         <label
           htmlFor="nav-drawer"
           aria-label="close sidebar"

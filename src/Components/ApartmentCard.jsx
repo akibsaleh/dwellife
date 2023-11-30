@@ -34,15 +34,15 @@ const ApartmentCard = ({ apartment }) => {
     }
   };
   return (
-    <div className="card card-side w-full bg-base-100 shadow-xl flex justify-between items-center">
-      <figure className="!my-0 w-1/2 flex grow">
+    <div className="card sm:card-side w-full bg-base-100 shadow-xl flex justify-between items-center">
+      <figure className="!my-0 w-full sm:w-1/2 flex grow">
         <img
           src={apartment?.image}
           alt="apartment"
           className="w-full h-72 object-cover"
         />
       </figure>
-      <div className="card-body [&_*]:!my-0 w-1/2 !py-6">
+      <div className="card-body [&_*]:!my-0 w-full sm:w-1/2 !py-6">
         <div className="flex flex-col">
           <p className="font-bold flex items-center">
             <PiDoorOpenFill className="text-2xl mr-2" />

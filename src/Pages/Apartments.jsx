@@ -25,12 +25,12 @@ const Apartments = () => {
     );
 
   return (
-    <div className="w-full flex flex-col justify-start items-center h-full min-h-screen pb-14 gap-y-10">
+    <div className="w-full flex flex-col justify-start items-center h-full min-h-screen pb-14 gap-y-10 px-5 lg:px-0">
       <PageTitle
         title={'Apartments'}
         subtitle={'Check out the details of all the available apartments below'}
       />
-      <div className="w-full grid grid-cols-2 gap-8 justify-center items-start">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 justify-center items-start">
         {apartments.map((apartment) => (
           <ApartmentCard
             key={apartment._id}

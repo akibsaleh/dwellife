@@ -33,7 +33,7 @@ const ManageAgreements = () => {
                 <progress className="progress w-56"></progress>
               </div>
             )}
-            {error && <div className="w-full h-full grow flex grow justify-center items-center">
+            {error && <div className="w-full h-full grow flex justify-center items-center">
                 <p className='text-3xl font-bold'>Failed to get data from Databse</p>
               </div>}
               {agreements?.length > 0 && (

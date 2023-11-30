@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const ContactSection = () => {
   return (
-    <div className="w-full flex columns-2 items-center justify-center gap-10 mt-10 mb-16">
+    <div className="w-full flex flex-col lg:flex-row columns-2 items-center justify-center gap-10 mt-10 mb-16">
       <motion.div
         className="w-full"
         initial={{ y: 50, opacity: 0 }}
@@ -16,7 +16,7 @@ const ContactSection = () => {
       >
         <AddressMap />
       </motion.div>
-      <div className="w-full -mt-16">
+      <div className="w-full -mt-16 px-5 lg:px-0">
         <SectionTitle
           title={'Our Location'}
           subtitle={'Explore and Navigate the Landscape'}
