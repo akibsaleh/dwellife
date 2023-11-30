@@ -153,7 +153,7 @@ const MakePayment = () => {
                 {...register('month', { required: 'Selecting a month is required' })}
               >
                 {monthsList.map((month, idx) => (
-                  <option key={idx} value={JSON.stringify({month: month.monthNumeric, year: month.year})}>{month.monthName}, {month.year}</option>
+                  <option key={idx} value={JSON.stringify({ month: month.monthName ,monthNumeric: month.monthNumeric, year: month.year})}>{month.monthName}, {month.year}</option>
                 ))}
               </select>
               {errors.month && <p className="text-red-500">{errors.month.message}</p>}
