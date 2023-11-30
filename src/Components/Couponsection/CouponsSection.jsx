@@ -6,7 +6,9 @@ import CouponCard from './CouponCard';
 import useAxiosSecure from '../../CustomHooks/useAxiosSecure';
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/Provider';
+
 const CouponsSection = () => {
+  const { loading } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
   const {
     isLoading,
@@ -14,6 +16,7 @@ const CouponsSection = () => {
     data: coupons = [],
   } = useQuery({
     queryKey: ['available-coupons'],
+    enabled: !loading,
     queryFn: async () => {
       const response = await axiosSecure.get('/api/available-coupons');
       return response.data;

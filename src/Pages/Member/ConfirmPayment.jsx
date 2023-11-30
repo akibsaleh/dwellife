@@ -13,20 +13,12 @@ const ConfirmPayment = () => {
   const location = useLocation();
   const axiosSecure = useAxiosSecure();
   const [paymentDetails, setPaymentDetails] = useState(null);
-  const [month, setMonth] = useState('');
   const [rent, setRent] = useState(parseInt(location.state.rent));
   const [disableCoupon, setDisableCoupon] = useState(false);
 
   useEffect(() => {
     setPaymentDetails(location.state);
   }, [location.state, paymentDetails]);
-
-  useEffect(() => {
-    if (paymentDetails) {
-      const monthObj = JSON.parse(paymentDetails.month);
-      setMonth(monthObj.month);
-    }
-  }, [paymentDetails]);
 
   const handleCoupon = async(e) => {
     e.preventDefault();
@@ -62,7 +54,7 @@ const ConfirmPayment = () => {
               <p className="text-xl font-bold">Amount</p>
             </div>
             <div className="w-full flex justify-between items-center py-5 px-5">
-              <p className="text-xl font-semibold">{month}</p>
+              <p className="text-xl font-semibold">{paymentDetails?.month}</p>
               <p className="text-xl font-semibold">$ {rent}</p>
             </div>
           </div>
