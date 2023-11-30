@@ -26,19 +26,27 @@ const MakePayment = () => {
 
   useEffect(() => {
     if (agreement) {
-      const agDateParts = agreement.date.split('/');
-      const sortedAgDate = `${agDateParts[1]}/${agDateParts[0]}/${agDateParts[2]}`
+      let sortedAgDate = '';
+      if (agreement?.month) {
+        const [lastMonth, lastYear] = agreement.month.split(',');
+        const lastRentMonth = new Date(`${lastMonth} 1, ${lastYear}`).getMonth();
+        sortedAgDate = new Date(lastYear, lastRentMonth + 1).toLocaleDateString('en-US');
+      } else {
+        const agDateParts = agreement.date.split('/');
+        sortedAgDate = `${agDateParts[1]}/${agDateParts[0]}/${agDateParts[2]}`;
+      }
+
       const newAgDate = new Date(sortedAgDate);
       const AgMonth = newAgDate.getMonth();
       const AgYear = newAgDate.getFullYear();
-      const monthsOptions = Array.from({length: 3}, (_, idx) => {
+      const monthsOptions = Array.from({ length: 3 }, (_, idx) => {
         const nextMonth = new Date(AgYear, AgMonth + idx);
         return {
           monthNumeric: nextMonth.getMonth(),
           monthName: nextMonth.toLocaleString('en-Us', { month: 'long' }),
           year: nextMonth.getFullYear(),
         };
-      })
+      });
       setMonthsList(monthsOptions);
     }
   }, [agreement]);
@@ -55,7 +63,7 @@ const MakePayment = () => {
     data.block = agreement?.block;
     data.apartment = agreement?.apartment;
     data.rent = agreement?.rent;
-    navigate('/dashboard/confirm-payment', {state : data});
+    navigate('/dashboard/confirm-payment', { state: data });
   };
 
   if (isLoading)
@@ -153,7 +161,12 @@ const MakePayment = () => {
                 {...register('month', { required: 'Selecting a month is required' })}
               >
                 {monthsList.map((month, idx) => (
-                  <option key={idx} value={`${month.monthName},${month.year}`}>{month.monthName}, {month.year}</option>
+                  <option
+                    key={idx}
+                    value={`${month.monthName},${month.year}`}
+                  >
+                    {month.monthName}, {month.year}
+                  </option>
                 ))}
               </select>
               {errors.month && <p className="text-red-500">{errors.month.message}</p>}

@@ -1,8 +1,22 @@
 import { useContext } from 'react';
 import PageTitle from '../../Components/PageTitle';
 import { AuthContext } from '../../Providers/Provider';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../CustomHooks/useAxiosSecure';
+import ProfileInformation from '../../Shared/ProfileInformation';
+import useAdmin from '../../CustomHooks/useAdmin';
+import AdminProfile from '../../Components/AdminProfile';
 const MyProfile = () => {
+  const isAdmin = useAdmin();
+  const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
+  const {data: agreement} = useQuery({
+    queryKey: [`singleUserAgreement`, user?.email],
+    queryFn: async () => {
+      const response = await axiosSecure.get(`/api/single-agreement?email=${user?.email}`);
+      return response.data;
+    }
+  });
   return (
     <div className="w-full flex flex-col items-center pb-20">
       <PageTitle
@@ -20,16 +34,8 @@ const MyProfile = () => {
           <h3 className="text-xl">{user?.displayName}</h3>
           <p className="text-lg">{user?.email}</p>
         </div>
-        <div className="w-full flex items-center text-left px-10 text-lg border-t border-base-300">
-          <p className="w-2/5 text-lg font-semibold border-r border-base-300 py-5 mr-5">Rented Apartment Info</p>
-          <p className="w-1/5">Floor: 4</p>
-          <p className="w-1/5">Block: A</p>
-          <p className="w-1/5">Apartment No: 401</p>
-        </div>
-        <div className="w-full flex items-center text-left px-10 text-lg border border-base-300">
-          <p className="w-2/5 text-lg font-semibold border-r border-base-300 py-5 mr-5">Agreement acceptence date</p>
-          <p className="w-3/5 text-left">29/11/2022</p>
-        </div>
+        {agreement && !isAdmin ? <ProfileInformation agreement={agreement} /> : '' }
+        {isAdmin ? <AdminProfile /> : '' }
       </div>
     </div>
   );

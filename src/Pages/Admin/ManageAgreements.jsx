@@ -11,6 +11,7 @@ const ManageAgreements = () => {
     isLoading,
     error,
     data: agreements = [],
+    refetch
   } = useQuery({
     queryKey: ['agreements'],
     queryFn: async () => {
@@ -58,6 +59,7 @@ const ManageAgreements = () => {
                       key={agreement?._id}
                       idx={idx}
                       agreement={agreement}
+                      refetch={refetch}
                     />
                   ))}
                 </tbody>

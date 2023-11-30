@@ -1,22 +1,32 @@
 import { useQuery } from '@tanstack/react-query';
 import PageTitle from '../../Components/PageTitle';
 import useAxiosSecure from '../../CustomHooks/useAxiosSecure';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../Providers/Provider';
 
 const PaymentHistory = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
-  const { isLoading, error, data: history } = useQuery({
-    queryKey: ['paymentsHistory'],
+  const [search, setSearch] = useState('');
+  const {
+    isLoading,
+    error,
+    data: history,
+  } = useQuery({
+    queryKey: ['paymentsHistory', search],
     queryFn: async () => {
-      const response = await axiosSecure.get(`/api/payment-history?email=${user?.email}`);
+      let response;
+      if (search !== '') {
+        response = await axiosSecure.get(`/api/payment-history?email=${user?.email}&month=${search}`);
+      } else {
+        response = await axiosSecure.get(`/api/payment-history?email=${user?.email}`);
+      }
       return response.data;
     },
   });
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(e.target.search.value);
+    setSearch(e.target.search.value.toLowerCase());
   };
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -48,7 +58,7 @@ const PaymentHistory = () => {
       </div>
       <div className="w-full flex flex-col items-center">
         <div className="overflow-x-auto">
-          <table className="table table-zebra">
+          <table className="table table-zebra table-lg">
             {/* head */}
             <thead>
               <tr>
@@ -62,17 +72,17 @@ const PaymentHistory = () => {
               </tr>
             </thead>
             <tbody>
-              {history?.map((payment, idx) =>
-              <tr key={payment?._id}>
-                <th className='max-w-[40px]'>{idx+1}</th>
-                <td>{payment?.email}</td>
-                <td>{payment?.apartment}</td>
-                <td>{payment?.month}</td>
-                <td>{payment?.rent}</td>
-                <td>{payment?.paymentDate}</td>
-                <td>{payment?.transactionId}</td>
-              </tr>
-               )}
+              {history?.map((payment, idx) => (
+                <tr key={payment?._id}>
+                  <th className="max-w-[40px]">{idx + 1}</th>
+                  <td>{payment?.email}</td>
+                  <td>{payment?.apartment}</td>
+                  <td>{payment?.month}</td>
+                  <td>{payment?.rent}</td>
+                  <td>{payment?.paymentDate}</td>
+                  <td>{payment?.transactionId}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

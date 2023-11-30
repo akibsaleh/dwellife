@@ -4,11 +4,13 @@ import { IoCloseCircleOutline } from 'react-icons/io5';
 import useAxiosSecure from '../../CustomHooks/useAxiosSecure';
 import { toast } from 'react-toastify';
 
-const AgreementRow = ({ agreement, idx }) => {
+const AgreementRow = ({ agreement, idx, refetch }) => {
   const axiosSecure = useAxiosSecure();
   const handleAgreement = async (status) => {
+    const currentDate = new Date().toLocaleDateString('en-GB');
     const agreementInfo = {
       status: 'checked',
+      date: currentDate,
     };
     const userInfo = {
       role: 'member',
@@ -24,6 +26,7 @@ const AgreementRow = ({ agreement, idx }) => {
       } else {
         toast.warning('Agreement rejected');
       }
+      refetch();
     } else {
       toast.error('Failed to update agreement');
       console.log(response);
